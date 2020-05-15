@@ -53,7 +53,15 @@ let products = [
 let chosenDepartment = "";
 
 function renderProducts() {
-  let html = ""; // Your code here!
+  let html = products.filter(item => item.quantity > 0)
+  .filter(item => (chosenDepartment === "") ? true : (chosenDepartment === item.department) ? true : false)
+  .map(item => `<li>
+  <h3>${item.name}</h3>
+  <p>${item.price}</p>
+  </li>`)
+  .reduce((content, item) => content + item);
+
+
   /*
     using the product array
 
@@ -87,7 +95,7 @@ function renderProducts() {
 }
 
 window.onload = () => {
-  renderProducts(products);
+  renderProducts();
   document.getElementById("showAll").onclick = function () {
     chosenDepartment = "";
     renderProducts();
