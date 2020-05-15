@@ -60,8 +60,6 @@ function renderProducts() {
   <p>${item.price}</p>
   </li>`)
   .reduce((content, item) => content + item);
-
-
   /*
     using the product array
 
